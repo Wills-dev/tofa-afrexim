@@ -28,7 +28,8 @@ const UserProfileHeader = ({
           <div className="flex-shrink-0">
             <div className="w-20 h-20 bg-gradient-to-r from-green-600 to-green-700 rounded-full flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-2xl">
-                {getInitials(userData?.firstName, userData?.lastName)}
+                {userData?.firstName &&
+                  getInitials(userData?.firstName, userData?.lastName)}
               </span>
             </div>
           </div>

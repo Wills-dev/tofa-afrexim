@@ -13,7 +13,7 @@ import Button from "@/components/atoms/Button/Button";
 import Badge from "@/components/atoms/Badge/Badge";
 
 const AccountStatusCard = ({ userData }: { userData: UserData }) => {
-  const accountStatus = getAccountStatus(userData.isEmailVerified);
+  const accountStatus = getAccountStatus(userData?.isEmailVerified);
 
   return (
     <Card>
@@ -67,7 +67,7 @@ const AccountStatusCard = ({ userData }: { userData: UserData }) => {
           </div>
           <Badge variant="info">
             {userData?.role &&
-              userData?.role.charAt(0).toUpperCase() + userData?.role.slice(1)}
+              userData?.role?.charAt(0).toUpperCase() + userData?.role.slice(1)}
           </Badge>
         </div>
       </div>

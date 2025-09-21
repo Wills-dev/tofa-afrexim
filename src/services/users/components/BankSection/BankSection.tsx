@@ -33,7 +33,7 @@ const BanksSection = ({
   } = usePostBankInfo();
 
   const isBank =
-    userData.bankName && userData.accountName && userData.accountNumber;
+    userData?.bankName && userData?.accountName && userData?.accountNumber;
 
   const showEditButton = isBank && isSameUser;
   const showAddBankButton = !isBank && isSameUser;
