@@ -1,25 +1,24 @@
 "use client";
 
+import { FormEvent, useContext } from "react";
+
 import Container from "@/components/atoms/Container/Container";
 import EmptyState from "@/components/atoms/EmptyState/EmptyState";
 import LoadState from "@/components/atoms/LoadState/LoadState";
 import AdminDashboardCardWrapper from "@/components/molecules/AdminDashboardCardWrapper/AdminDashboardCardWrapper";
 import DashboardHeader from "@/components/molecules/DashboardHeader/DashboardHeader";
+import CompaniesSection from "@/services/users/components/CompaniesSection/CompaniesSection";
+
 import { AuthContext } from "@/contexts/AuthState";
 import { useUserStat } from "@/lib/hooks/useUserStat";
-import CompaniesSection from "@/services/users/components/CompaniesSection/CompaniesSection";
 import { useGetProfile } from "@/services/users/hooks/useGetProfile";
-import { useContext } from "react";
 
 const UserCompanyWrapper = () => {
   const { currentUser } = useContext(AuthContext);
-  const {
-    isFetching,
-    userStats,
-    currentRange,
-    handleDateRangeChange,
-    getUserStats,
-  } = useUserStat(currentUser?.id);
+  const { isFetching, userStats, handleDateRangeChange } = useUserStat(
+    currentUser?.id
+  );
+
   const {
     profile,
     loading,
@@ -34,7 +33,6 @@ const UserCompanyWrapper = () => {
     isLastPage,
     limit,
     setLimit,
-    totalItems,
   } = useGetProfile();
 
   if (loading) {
@@ -58,6 +56,11 @@ const UserCompanyWrapper = () => {
           description="Monitor your registered companies on the platform"
         />
         <AdminDashboardCardWrapper
+          totalCompanies={userStats?.totalCompanies || 0}
+          totalPendingCompanies={userStats?.totalPendingCompanies || 0}
+          totalProcessingCompanies={userStats?.totalProcessingCompanies || 0}
+          totalAcceptedCompanies={userStats?.totalAcceptedCompanies || 0}
+          totalDeclinedCompanies={userStats?.totalDeclinedCompanies || 0}
           handleDateRangeChange={handleDateRangeChange}
           loading={isFetching}
         />

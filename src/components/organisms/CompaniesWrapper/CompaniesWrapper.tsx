@@ -1,5 +1,7 @@
 "use client";
 
+import { FormEvent } from "react";
+
 import { Column } from "./Column";
 import { useGetAllCompanies } from "@/services/companies/hooks/useGetAllCompanies";
 
@@ -8,7 +10,6 @@ import Container from "@/components/atoms/Container/Container";
 import AdminDashboardCardWrapper from "@/components/molecules/AdminDashboardCardWrapper/AdminDashboardCardWrapper";
 import DashboardHeader from "@/components/molecules/DashboardHeader/DashboardHeader";
 import TableSkeleton from "@/components/molecules/skeletonLoaders/TableSkeleton";
-import { FormEvent, useCallback } from "react";
 import { statusOptions } from "@/lib/constants";
 import { useAdminStat } from "@/lib/hooks/useAdminStat";
 
@@ -31,14 +32,13 @@ const CompaniesWrapper = () => {
     getCompaines,
     status,
     setStatus,
-
     setLimit,
   } = useGetAllCompanies();
 
-  const handleSubmitSearch = useCallback((e: FormEvent) => {
+  const handleSubmitSearch = (e: FormEvent) => {
     e.preventDefault();
     getCompaines();
-  }, []);
+  };
 
   return (
     <Container>

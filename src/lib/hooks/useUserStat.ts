@@ -7,9 +7,6 @@ import { formatDateForCallback } from "../helpers/dateFormats";
 export const useUserStat = (userId: string) => {
   const [isFetching, setIsFetching] = useState(true);
   const [userStats, setUserStats] = useState({
-    totalUsers: 0,
-    totalActiveUsers: 0,
-    totalBlockedUsers: 0,
     totalCompanies: 0,
     totalPendingCompanies: 0,
     totalProcessingCompanies: 0,
