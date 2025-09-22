@@ -36,10 +36,7 @@ const LineCharts = ({
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 10)}
             />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Line
               dataKey={dataKey2}
               type="natural"

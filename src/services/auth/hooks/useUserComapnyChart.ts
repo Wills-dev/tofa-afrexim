@@ -27,6 +27,7 @@ export const useUserComapnyChart = () => {
     if (params.length > 0) {
       url += `?${params.join("&")}`;
     }
+    setIsFetching(true);
     try {
       const { data } = await axiosInstance.get(url, {
         withCredentials: true,

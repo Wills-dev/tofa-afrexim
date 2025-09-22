@@ -15,6 +15,7 @@ const Logo = ({ size = "md" }: LogoProps) => {
       <Image
         src="/images/logo.png"
         alt="Logo"
+        priority
         width={sizes[size].size}
         height={sizes[size].size}
         className={`object-contain ${sizes[size].container}`}

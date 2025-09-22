@@ -34,7 +34,7 @@ const AreaCharts = ({
               tickLine={false}
               axisLine={false}
               tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => value.slice(0, 10)}
             />
             <ChartTooltip
               cursor={false}
@@ -43,9 +43,9 @@ const AreaCharts = ({
             <Area
               dataKey={dataKey2}
               type="natural"
-              fill=" var(--chart-2)"
+              fill="#5cf05c"
               fillOpacity={0.4}
-              stroke=" var(--chart-2)"
+              stroke=" #5cf05c"
             />
           </AreaChart>
         </ChartContainer>
