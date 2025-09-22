@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useContext } from "react";
+import { useContext } from "react";
 
 import Container from "@/components/atoms/Container/Container";
 import EmptyState from "@/components/atoms/EmptyState/EmptyState";

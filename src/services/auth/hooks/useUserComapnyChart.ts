@@ -4,14 +4,18 @@ import { axiosInstance } from "@/lib/axiosInstance";
 import { formatDateForCallback } from "@/lib/helpers/dateFormats";
 import { DateRange } from "@/lib/types";
 
-export const useUserComapnyChart = (userId: string) => {
+export const useUserComapnyChart = () => {
   const [companyChart, setCompanyChart] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [sortBy, setSortBy] = useState("");
 
   const getComanyChart = async (dateRange?: DateRange) => {
-    let url = `/api/agent/stats/${userId}`;
+    let url = `/company/agent/registered`;
     const params = [];
 
+    if (sortBy) {
+      params.push(`sortBy=${sortBy}`);
+    }
     if (dateRange?.startDate) {
       params.push(`startDate=${formatDateForCallback(dateRange?.startDate)}`);
     }
@@ -29,7 +33,7 @@ export const useUserComapnyChart = (userId: string) => {
       });
       setCompanyChart(data?.data);
     } catch (error) {
-      console.log("error getting admin company chart", error);
+      console.log("error getting user company chart", error);
     } finally {
       setIsFetching(false);
     }
@@ -37,7 +41,7 @@ export const useUserComapnyChart = (userId: string) => {
 
   useEffect(() => {
     getComanyChart();
-  }, []);
+  }, [sortBy]);
 
-  return { getComanyChart, isFetching, companyChart };
+  return { getComanyChart, isFetching, companyChart, sortBy, setSortBy };
 };

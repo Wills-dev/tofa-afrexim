@@ -38,7 +38,6 @@ const UserOverview = () => {
         />
         <UserActivityWrapper />
 
-        {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Link href={ROUTES?.onboard}>
             <Card className="p-6 hover:shadow-md transition-shadow cursor-pointer">
@@ -48,12 +47,7 @@ const UserOverview = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Quick Onboard</h4>
-                  <Link
-                    href={ROUTES?.onboard}
-                    className="text-sm text-gray-500"
-                  >
-                    Add a new company
-                  </Link>
+                  <p className="text-sm text-gray-500">Add a new company</p>
                 </div>
               </div>
             </Card>

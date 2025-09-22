@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+
+import Button from "@/components/atoms/Button/Button";
 import Card from "@/components/atoms/Card/Card";
 import LineCharts from "../Charts/LineChart";
 import DateRangePicker from "@/components/molecules/DateRangePicker/DateRangePicker";
@@ -8,8 +11,6 @@ import ChartLoader from "@/components/molecules/skeletonLoaders/ChartLoader";
 import { ChartConfig } from "@/components/ui/chart";
 import { ResponsiveContainer } from "recharts";
 import { useUserComapnyChart } from "@/services/auth/hooks/useUserComapnyChart";
-import { useContext, useState } from "react";
-import { AuthContext } from "@/contexts/AuthState";
 import { DateRange } from "@/lib/types";
 
 const chartConfig = {
@@ -20,10 +21,8 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const UserLineChart = () => {
-  const { currentUser } = useContext(AuthContext);
-  const { getComanyChart, isFetching, companyChart } = useUserComapnyChart(
-    currentUser?.id
-  );
+  const { getComanyChart, isFetching, companyChart, sortBy, setSortBy } =
+    useUserComapnyChart();
 
   const [currentRange, setCurrentRange] = useState<DateRange>({
     startDate: null,
@@ -38,7 +37,10 @@ const UserLineChart = () => {
   };
 
   return (
-    <Card className="lg:col-span-2 p-6">
+    <Card className="lg:col-span-2 p-6 space-y-2">
+      <div className="flex justify-end">
+        <DateRangePicker onDateRangeChange={onDateRangeChange} />
+      </div>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">
@@ -46,19 +48,24 @@ const UserLineChart = () => {
           </h3>
           <p className="text-sm text-gray-500">Companies onboarded over time</p>
         </div>
-        {/* <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            Monthly
+        <div className="flex gap-2">
+          <Button
+            variant={sortBy === "monthly" ? "primary" : "outline"}
+            size="sm"
+            onClick={() => setSortBy("monthly")}
+          >
+            monthly
           </Button>
-          <Button variant="outline" size="sm">
+          <Button
+            variant={sortBy === "weekly" ? "primary" : "outline"}
+            size="sm"
+            onClick={() => setSortBy("weekly")}
+          >
             Weekly
           </Button>
-        </div> */}
+        </div>
       </div>
       <div className="space-y-2">
-        <div className="flex justify-end">
-          <DateRangePicker onDateRangeChange={onDateRangeChange} />
-        </div>
         {isFetching ? (
           <ChartLoader />
         ) : (

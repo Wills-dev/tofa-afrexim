@@ -58,8 +58,10 @@ export const useUserStat = (userId: string) => {
   };
 
   useEffect(() => {
-    getUserStats();
-  }, []);
+    if (userId) {
+      getUserStats();
+    }
+  }, [userId]);
 
   return {
     isFetching,

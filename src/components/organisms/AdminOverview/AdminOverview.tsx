@@ -4,10 +4,8 @@ import AdminDashboardCardWrapper from "@/components/molecules/AdminDashboardCard
 import DashboardHeader from "@/components/molecules/DashboardHeader/DashboardHeader";
 import AdminChartWrapper from "../AdminChartWrapper/AdminChartWrapper";
 import Container from "@/components/atoms/Container/Container";
+
 import { useAdminStat } from "@/lib/hooks/useAdminStat";
-import { useAdminCompanyChart } from "@/services/auth/hooks/useAdminCompanyChart";
-import { useState } from "react";
-import { DateRange } from "@/lib/types";
 
 const AdminOverview = () => {
   const { isFetching, adminStats, handleDateRangeChange } = useAdminStat();
