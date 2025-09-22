@@ -174,26 +174,31 @@ export const Column = [
       const role = currentUser?.role;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 text-right">
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <Link
-                href={
-                  role === "user"
-                    ? ROUTES?.dashboard_company_info(comapny.id)
-                    : ROUTES?.dashboard_admin_company_info(comapny.id)
-                }
-              >
-                View Info
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div>
+          {" "}
+          <Link
+            href={
+              role === "user"
+                ? ROUTES?.dashboard_company_info(comapny.id)
+                : ROUTES?.dashboard_admin_company_info(comapny.id)
+            }
+            className="text-blue-500 hover:underline transition-all duration-300"
+          >
+            View Info
+          </Link>
+        </div>
+        // <DropdownMenu>
+        //   <DropdownMenuTrigger asChild>
+        //     <Button variant="ghost" className="h-8 w-8 p-0 text-right">
+        //       <MoreHorizontal className="h-4 w-4" />
+        //     </Button>
+        //   </DropdownMenuTrigger>
+        //   <DropdownMenuContent align="end">
+        //     <DropdownMenuItem>
+
+        //     </DropdownMenuItem>
+        //   </DropdownMenuContent>
+        // </DropdownMenu>
       );
     },
     enableSorting: false,

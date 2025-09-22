@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import Providers from "./providers";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "TOFA AFREXIM",
   description:
     "TOFA connects Africa's trade ecosystem in partnership with Afrexim Bank, empowering businesses to unlock opportunities and drive continental growth.",
@@ -20,13 +23,6 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TOFA - Connecting Africa's Trade Ecosystem",
-    description:
-      "TOFA partners with Afrexim Bank and African Trade Gateway to connect Africa's trade ecosystem, empowering businesses across the continent to unlock opportunities and drive continental trade growth.",
-    images: ["/hero-preview.jpg"],
   },
 };
 

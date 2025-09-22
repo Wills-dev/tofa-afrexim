@@ -19,6 +19,7 @@ const Logo = ({ size = "md" }: LogoProps) => {
         width={sizes[size].size}
         height={sizes[size].size}
         className={`object-contain ${sizes[size].container}`}
+        loading="eager"
       />
     </Link>
   );

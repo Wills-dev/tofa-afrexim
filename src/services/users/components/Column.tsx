@@ -130,20 +130,28 @@ export const Column = [
       const agent = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 text-right">
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <Link href={ROUTES?.dashboard_admin_users_info(agent?.id)}>
-                View Agent Info
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="space-y-1 flex flex-col">
+          <Link
+            href={ROUTES?.dashboard_admin_users_info(agent?.id)}
+            className="text-blue-500 hover:underline transition-all duration-300"
+          >
+            View Agent Info
+          </Link>
+          {/* <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0 text-right">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>
+                <Link href={ROUTES?.dashboard_admin_users_info(agent?.id)}>
+                  View Agent Info
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu> */}
+        </div>
       );
     },
     enableSorting: false,

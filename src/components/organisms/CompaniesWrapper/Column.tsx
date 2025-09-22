@@ -191,7 +191,20 @@ export const Column = [
       const comapny = row.original;
 
       return (
-        <DropdownMenu>
+        <div className="space-y-1 flex flex-col">
+          <Link
+            href={ROUTES?.dashboard_admin_company_info(comapny.id)}
+            className="text-blue-500 hover:underline transition-all duration-300"
+          >
+            View Info
+          </Link>
+          <Link
+            href={ROUTES?.dashboard_admin_users_info(comapny?.agent?.id)}
+            className="text-blue-500 hover:underline transition-all duration-300"
+          >
+            View Agent Info
+          </Link>
+          {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0 text-right">
               <MoreHorizontal className="h-4 w-4" />
@@ -211,7 +224,8 @@ export const Column = [
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
+        </div>
       );
     },
     enableSorting: false,
