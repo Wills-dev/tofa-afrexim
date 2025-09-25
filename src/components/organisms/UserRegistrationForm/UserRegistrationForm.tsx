@@ -12,8 +12,12 @@ import { ROUTES } from "@/lib/constants/routes";
 import { AFRICAN_COUNTRIES } from "@/services/auth/constants";
 import { useSignup } from "@/services/auth/hooks/useSignup";
 import { Lock, Mail, Phone } from "lucide-react";
+import { useGetAllSupervisorNames } from "@/services/users/hooks/useGetAllSupervisorNames";
+import SupervisorSelectForm from "@/components/molecules/SpervisorSelectForm/SpervisorSelectForm";
 
 const UserRegistrationForm = () => {
+  const { allSupervisors, isFetching } = useGetAllSupervisorNames();
+
   const {
     handleChange,
     formData,
@@ -75,6 +79,14 @@ const UserRegistrationForm = () => {
           icon={<Mail className="w-5 h-5" />}
           required
           disabled={loading}
+        />
+        <SupervisorSelectForm
+          label="Supervisor"
+          value={formData.supervisorId}
+          onChange={(value) => handleChange("supervisorId", value)}
+          options={allSupervisors}
+          disabled={loading || isFetching}
+          loading={isFetching}
         />
         <SelectForm
           label="Country"

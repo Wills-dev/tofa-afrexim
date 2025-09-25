@@ -31,6 +31,7 @@ const HeroSection = () => {
                 variant="primary"
                 size="lg"
                 icon={<ArrowRight className="w-5 h-5" />}
+                className="w-fit"
               >
                 Get Started
               </Button>

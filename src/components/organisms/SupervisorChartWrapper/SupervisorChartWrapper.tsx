@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-import AdminAreaChart from "../AdminAreaChart/AdminAreaChart";
-import AdminLineChart from "../AdminLineChart/AdminLineChart";
-import DateRangePicker from "@/components/molecules/DateRangePicker/DateRangePicker";
-
 import { DateRange } from "@/lib/types";
-import { useAdminCompanyChart } from "@/services/auth/hooks/useAdminCompanyChart";
-import { useAdminUserChart } from "@/services/auth/hooks/useAdminUserChart";
+import { useSupervisorUserChart } from "@/services/auth/hooks/useSupervisorUserChart";
+import { useSupervisorCompannyChart } from "@/services/auth/hooks/useSupervisorCompannyChart";
 
-const AdminChartWrapper = () => {
+import DateRangePicker from "@/components/molecules/DateRangePicker/DateRangePicker";
+import AdminLineChart from "../AdminLineChart/AdminLineChart";
+import AdminAreaChart from "../AdminAreaChart/AdminAreaChart";
+
+const SupervisorChartWrapper = () => {
   const [currentRange, setCurrentRange] = useState<DateRange>({
     startDate: null,
     endDate: null,
@@ -19,14 +19,15 @@ const AdminChartWrapper = () => {
     companyChart,
     sortBy,
     setSortBy,
-  } = useAdminCompanyChart();
+  } = useSupervisorCompannyChart();
+
   const {
     getUserCharts,
     isFetching,
     userChart,
     sortBy: sort,
     setSortBy: setSort,
-  } = useAdminUserChart();
+  } = useSupervisorUserChart();
 
   const onDateRangeChange = (range: DateRange) => {
     setCurrentRange(range);
@@ -59,4 +60,4 @@ const AdminChartWrapper = () => {
   );
 };
 
-export default AdminChartWrapper;
+export default SupervisorChartWrapper;

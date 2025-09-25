@@ -21,6 +21,15 @@ export const AUTH_CONFIG = {
     "/dashboard/admin/companies/[id]",
     "/dashboard/admin/users",
     "/dashboard/admin/users/[id]",
+    "/dashboard/admin/supervisors",
+    "/dashboard/admin/supervisors/[id]",
+  ],
+  supervisor: [
+    "/dashboard/supervisor/overview",
+    "/dashboard/supervisor/companies",
+    "/dashboard/supervisor/companies/[id]",
+    "/dashboard/supervisor/users",
+    "/dashboard/supervisor/users/[id]",
   ],
   user: [
     "/dashboard/overview",
@@ -56,6 +65,15 @@ export function hasRoleAccess(pathname: string, userRole: string): boolean {
   if (isUserRoute) {
     const hasAccess = userRole === "user";
 
+    return hasAccess;
+  }
+
+  // Check super routes (superadmin + admin can access)
+  const isSupervisorRoute = AUTH_CONFIG.supervisor.some((route) =>
+    pathname.startsWith(route)
+  );
+  if (isSupervisorRoute) {
+    const hasAccess = userRole === "supervisor";
     return hasAccess;
   }
 

@@ -12,7 +12,6 @@ export const useGetCompanyInfo = (companyId: string) => {
         withCredentials: true,
       });
       setCompanyInfo(data?.data);
-      console.log("data", data);
     } catch (error) {
       console.log("error fetching company info", error);
     } finally {

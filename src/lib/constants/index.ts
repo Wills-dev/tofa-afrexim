@@ -8,6 +8,7 @@ import {
   CheckCircle,
   XCircle,
   UserPlus,
+  UserLock,
 } from "lucide-react";
 import { ROUTES } from "./routes";
 import { StatusType } from "../types";
@@ -53,10 +54,38 @@ export const adminMenuItems = [
     link: ROUTES?.dashboard_admin_users,
   },
   {
+    id: "users",
+    label: "Manage Supervisors",
+    icon: UserLock,
+    link: ROUTES?.dashboard_admin_supervisors,
+  },
+  {
     id: "register",
     label: "Register Admin",
     icon: UserPlus,
     link: ROUTES?.dashboard_admin_register,
+  },
+  { id: "settings", label: "Settings", icon: Settings, link: ROUTES?.settings },
+];
+
+export const supervisorMenuItems = [
+  {
+    id: "overview",
+    label: "Overview",
+    icon: BarChart3,
+    link: ROUTES?.dashboard_supervisor,
+  },
+  {
+    id: "companies",
+    label: "Companies",
+    icon: Building2,
+    link: ROUTES?.dashboard_supervisor_company,
+  },
+  {
+    id: "users",
+    label: "Manage Users",
+    icon: Users,
+    link: ROUTES?.dashboard_supervisor_users,
   },
   { id: "settings", label: "Settings", icon: Settings, link: ROUTES?.settings },
 ];

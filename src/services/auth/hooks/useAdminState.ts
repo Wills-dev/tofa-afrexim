@@ -14,7 +14,7 @@ export const useAdminState = () => {
     email: "",
     phoneNumber: "",
     country: "",
-    role: "admin",
+    role: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +44,9 @@ export const useAdminState = () => {
 
     if (!formData.phoneNumber) {
       newErrors.phoneNumber = "Phone number is required";
+    }
+    if (!formData.role) {
+      newErrors.role = "Role is required";
     }
 
     if (!formData.country) {

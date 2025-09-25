@@ -39,7 +39,9 @@ const CompaniesSection = ({
     <div className="py-6">
       <div className="flex sm:items-center justify-between max-sm:flex-col gap-2 mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">Companies</h3>
+          <h3 className="text-lg font-semibold text-gray-900">
+            User Companies
+          </h3>
           <p className="text-sm text-gray-600">
             {companies.length} companies onboarded
           </p>

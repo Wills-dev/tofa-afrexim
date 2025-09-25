@@ -20,3 +20,13 @@ export const AFRICAN_COUNTRIES = [
   //   { value: 'CM', label: 'Cameroon' },
   //   { value: 'GA', label: 'Gabon' },
 ];
+
+export const roleOptions = [
+  { value: "admin", label: "Admin" },
+  { value: "supervisor", label: "Supervisor" },
+];
+
+export const supervisors = [
+  { value: "Victor Ejiogu", label: "Victor Ejiogu" },
+  { value: "Ola  Ojo", label: "Ola Ojo" },
+];

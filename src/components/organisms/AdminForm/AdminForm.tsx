@@ -4,7 +4,7 @@ import FormCard from "@/components/molecules/FormCard/FormCard";
 import InputForm from "@/components/molecules/InputForm/InputForm";
 import SelectForm from "@/components/molecules/SelectForm/SelectForm";
 
-import { AFRICAN_COUNTRIES } from "@/services/auth/constants";
+import { AFRICAN_COUNTRIES, roleOptions } from "@/services/auth/constants";
 import { AdminFormProps } from "@/services/auth/types";
 import { Mail, Phone } from "lucide-react";
 
@@ -78,6 +78,16 @@ const AdminForm = ({
           options={AFRICAN_COUNTRIES}
           error={errors.country}
           placeholder="Select your country"
+          required
+          disabled={loading}
+        />
+        <SelectForm
+          label="Role"
+          value={formData.role}
+          onChange={(value) => updateField("role", value)}
+          options={roleOptions}
+          error={errors.role}
+          placeholder="Select your role"
           required
           disabled={loading}
         />

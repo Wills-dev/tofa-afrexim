@@ -27,7 +27,7 @@ const RegisterAdmin = () => {
             handleReset={handleReset}
             title="Registration Successful"
             description={`An email has been sent to your ${formData.email}. Please check your inbox and click the link provided to set your password.`}
-            buttonLabel="Register new admin"
+            buttonLabel="Register new user"
           />
         </div>
       ) : (

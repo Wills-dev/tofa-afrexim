@@ -1,15 +1,11 @@
+import { useRouter } from "next/navigation";
 import { FormEventHandler, useContext } from "react";
 
 import { axiosInstance } from "@/lib/axiosInstance";
 import { promiseErrorFunction } from "@/lib/helpers/promiseError";
 import { useAuthState } from "./useAuthState";
 import { AuthContext } from "@/contexts/AuthState";
-import { useRouter } from "next/navigation";
-import {
-  createAuthCookie,
-  getCookie,
-  readAuthCookie,
-} from "@/lib/helpers/cookieHelper";
+import { createAuthCookie } from "@/lib/helpers/cookieHelper";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const useLogin = () => {
@@ -42,6 +38,8 @@ export const useLogin = () => {
       createAuthCookie("sessionToken", data?.token);
       if (data?.agent?.role === "admin" || data?.agent?.role === "superadmin") {
         router.push(ROUTES?.dashboard_admin);
+      } else if (data?.agent?.role === "supervisor") {
+        router.push(ROUTES?.dashboard_supervisor);
       } else {
         router.push(ROUTES?.dashboard);
       }

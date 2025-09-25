@@ -39,6 +39,7 @@ export const useSignup = () => {
         country: "",
         firstName: "",
         lastName: "",
+        supervisorId: "",
       });
     } catch (error) {
       const errMsg = promiseErrorFunction(error);

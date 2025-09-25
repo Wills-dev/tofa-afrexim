@@ -7,7 +7,7 @@ import { ROUTES } from "./lib/constants/routes";
 interface DecodedToken {
   id: string;
   email: string;
-  role?: "admin" | "superadmin" | "user";
+  role?: "admin" | "superadmin" | "user" | "supervisor";
   iat: number;
   exp: number;
 }

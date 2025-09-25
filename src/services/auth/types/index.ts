@@ -12,6 +12,12 @@ export interface SignupFormData {
   phoneNumber: string;
   country: string;
   password: string;
+  supervisorId: string;
+}
+export interface SupervisorSelectOption {
+  id: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface VerificationFormData {
@@ -24,7 +30,7 @@ export interface adminFormData {
   email: string;
   phoneNumber: string;
   country: string;
-  role: "admin";
+  role: string;
 }
 
 export interface BankInfoFormData {

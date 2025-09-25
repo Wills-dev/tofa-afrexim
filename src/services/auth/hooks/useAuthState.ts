@@ -8,6 +8,7 @@ export const useAuthState = () => {
     email: "",
     phoneNumber: "",
     country: "",
+    supervisorId: "",
     password: "",
   });
   const [loginFormData, setLoginFormData] = useState<LoginFormData>({
