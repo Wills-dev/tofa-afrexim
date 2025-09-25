@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 
-import { adminMenuItems } from "@/lib/constants";
+import { supervisorMenuItems } from "@/lib/constants";
 
 import AdminAgentInfo from "@/services/users/components/AdminAgentInfo/AdminAgentInfo";
 import DashboardLayout from "@/components/templates/DashboardLayout/DashboardLayout";
@@ -12,7 +12,7 @@ const page = () => {
   const userId = params.id as string;
 
   return (
-    <DashboardLayout menuItems={adminMenuItems}>
+    <DashboardLayout menuItems={supervisorMenuItems}>
       <AdminAgentInfo userId={userId} />
     </DashboardLayout>
   );
