@@ -24,7 +24,7 @@ const MobileMenu = ({
         <NavigationLink href="#about">About</NavigationLink>
         <NavigationLink href="#partnership">Partnership</NavigationLink>
 
-        <div className="pt-4 border-t border-gray-100 space-y-2">
+        <div className="pt-4 border-t border-gray-100 flex flex-col gap-2">
           {!isLoggedIn ? (
             <>
               <Button
