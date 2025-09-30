@@ -28,6 +28,8 @@ const OnboardingForm = () => {
     handleFileChange,
   } = useCompanyOnboarding();
 
+  const firstError = Object.values(errors).find((error) => error);
+
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-orange-100 py-12 px-4 sm:px-6 lg:px-8 justify-center items-center flex">
@@ -117,9 +119,13 @@ const OnboardingForm = () => {
               </Button>
             </div>
 
-            <p className="text-sm text-gray-500 text-center">
-              * Required fields
-            </p>
+            {firstError ? (
+              <p className="text-sm text-red-500 text-center">* {firstError}</p>
+            ) : (
+              <p className="text-sm text-gray-500 text-center">
+                * Required fields
+              </p>
+            )}
           </form>
         </div>
       </div>

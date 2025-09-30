@@ -2,11 +2,15 @@ import axios from "axios";
 
 import { readAuthCookie } from "./helpers/cookieHelper";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+const baseUrl =
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  "https://afrexim-server.onrender.com/api";
+
+// const baseUrl = "https://730026c67fb4.ngrok-free.app/api";
 
 export const axiosInstance = axios.create({
   //create instance
-  baseURL: baseUrl || "https://afrexim-server.onrender.com/api",
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
   },
