@@ -13,7 +13,7 @@ import {
 } from "@/lib/constants";
 
 const page = () => {
-  const { currentUser, refreshUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const role = currentUser?.role;
   const user = role === "user";
   const supervisor = role === "supervisor";
@@ -24,7 +24,7 @@ const page = () => {
         user ? userMenuItems : supervisor ? supervisorMenuItems : adminMenuItems
       }
     >
-      <SettingsWrapper currentUser={currentUser} refreshUser={refreshUser} />
+      <SettingsWrapper />
     </DashboardLayout>
   );
 };

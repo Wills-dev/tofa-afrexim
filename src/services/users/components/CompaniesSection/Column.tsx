@@ -180,6 +180,8 @@ export const Column = [
             href={
               role === "user"
                 ? ROUTES?.dashboard_company_info(comapny.id)
+                : role === "supervisor"
+                ? ROUTES?.dashboard_supervisor_company_info(comapny.id)
                 : ROUTES?.dashboard_admin_company_info(comapny.id)
             }
             className="text-blue-500 hover:underline transition-all duration-300"
