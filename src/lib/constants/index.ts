@@ -54,7 +54,7 @@ export const adminMenuItems = [
     link: ROUTES?.dashboard_admin_users,
   },
   {
-    id: "users",
+    id: "supervisors",
     label: "Manage Supervisors",
     icon: UserLock,
     link: ROUTES?.dashboard_admin_supervisors,
