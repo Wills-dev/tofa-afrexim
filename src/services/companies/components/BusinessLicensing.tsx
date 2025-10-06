@@ -7,7 +7,7 @@ import { CompanyType } from "../types";
 
 const BusinessLicensing = ({ companyData }: { companyData: CompanyType }) => {
   return (
-    <Card className="p-6">
+    <Card>
       <h3 className="text-lg font-semibold text-gray-900 mb-6">
         Business Licensing & Registration
       </h3>

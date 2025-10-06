@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 
+import ActivityLog from "./ActivityLog";
 import Alert from "@/components/atoms/Alert/Alert";
 import Container from "@/components/atoms/Container/Container";
 import LoadState from "@/components/atoms/LoadState/LoadState";
@@ -17,8 +18,13 @@ import DocumentsSection from "./DocumentsSection";
 import { useGetCompanyInfo } from "../hooks/useGetCompanyInfo";
 import { useUpdateCompanyStatus } from "../hooks/useUpdateCompanyStatus";
 import { StatusType } from "@/lib/types";
+import { AuthContext } from "@/contexts/AuthState";
 
 const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
+  const { currentUser } = useContext(AuthContext);
+  const role = currentUser?.role;
+  const isAdmin = role === "superadmin" || role === "admin";
+
   const { companyInfo, isLoading, getCompanyInfo } =
     useGetCompanyInfo(companyId);
   const { updateStatus, alert, updating, setAlert } =
@@ -80,7 +86,10 @@ const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
             <CompanyOverview companyData={companyInfo} />
             <FinancialInformation companyData={companyInfo} />
           </div>
-          <div className="col-span-3">
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {isAdmin && <ActivityLog activityLog={companyInfo?.activity} />}
+          <div className="lg:col-span-2">
             <DocumentsSection companyData={companyInfo} />
           </div>
         </div>

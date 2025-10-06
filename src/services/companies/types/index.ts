@@ -1,3 +1,9 @@
+export interface ActivityLogType {
+  userName: string;
+  activity: string;
+  timestamp: string;
+}
+
 export interface CompanyType {
   id: string;
   agentId: string;
@@ -37,6 +43,7 @@ export interface CompanyType {
   status: "Pending" | "Processing" | "Accepted" | "Declined";
   createdAt: string;
   updatedAt: string;
+  activity: ActivityLogType[];
 }
 
 export interface CompanyOnboardingFormData {

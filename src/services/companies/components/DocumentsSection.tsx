@@ -33,7 +33,7 @@ const DocumentsSection = ({ companyData }: { companyData: CompanyType }) => {
   const otherDocs = parseOtherDocuments(companyData?.otherDocumentsUrl);
 
   return (
-    <Card className="p-6">
+    <Card>
       <h3 className="text-lg font-semibold text-gray-900 mb-6">Documents</h3>
 
       <div className="space-y-4">
