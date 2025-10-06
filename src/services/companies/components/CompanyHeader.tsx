@@ -43,9 +43,9 @@ const CompanyHeader = ({
               <h1 className="text-2xl font-bold text-gray-900">
                 {companyData.companyName}
               </h1>
-              <p className="text-gray-600 mt-1">
+              {/* <p className="text-gray-600 mt-1">
                 {companyData.companyDescription}
-              </p>
+              </p> */}
             </div>
 
             <div className="flex flex-wrap items-center gap-4 text-sm">

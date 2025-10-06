@@ -19,7 +19,6 @@ const BusinessLicensing = ({ companyData }: { companyData: CompanyType }) => {
       <h3 className="text-lg font-semibold text-gray-900 mb-6">
         Business Licensing & Registration
       </h3>
-
       <div className="space-y-1 divide-y divide-gray-100">
         <InfoItem
           icon={Shield}
@@ -27,28 +26,24 @@ const BusinessLicensing = ({ companyData }: { companyData: CompanyType }) => {
           value={companyData?.isOfficiallyRegistered}
           type="boolean"
         />
-
         <InfoItem
           icon={FileText}
           label="Has Valid License"
           value={companyData?.hasValidLicense}
           type="boolean"
         />
-
         <InfoItem
           icon={Globe}
           label="Engages in Cross-Border Trade"
           value={companyData?.engagesInCrossBorderTrade}
           type="boolean"
         />
-
         <InfoItem
           icon={Package}
           label="Has Import/Export License"
           value={companyData?.hasImportExportLicense}
           type="boolean"
         />
-
         <InfoItem
           icon={Building2}
           label="Works with International Partners"
