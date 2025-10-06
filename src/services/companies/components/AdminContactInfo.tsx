@@ -8,7 +8,6 @@ import { CompanyType } from "../types";
 const AdminContactInfo = ({ companyData }: { companyData: CompanyType }) => {
   const fullAddress = [
     companyData.streetAddress,
-    companyData.streetAddressLine2,
     companyData.city,
     companyData.country,
     companyData.postalCode,

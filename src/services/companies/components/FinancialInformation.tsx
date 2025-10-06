@@ -46,8 +46,8 @@ const FinancialInformation = ({
           </div>
           <p className="text-2xl font-bold text-blue-900">
             $
-            {companyData.totalAssetsUSD
-              ? Number(companyData.totalAssetsUSD).toLocaleString()
+            {companyData?.totalAssetsUSD
+              ? Number(companyData?.totalAssetsUSD).toLocaleString()
               : "0:00"}
           </p>
         </div>
@@ -61,8 +61,8 @@ const FinancialInformation = ({
           </div>
           <p className="text-2xl font-bold text-orange-900">
             $
-            {companyData.currentLiquidityUSD
-              ? Number(companyData.currentLiquidityUSD).toLocaleString()
+            {companyData?.currentLiquidityUSD
+              ? Number(companyData?.currentLiquidityUSD).toLocaleString()
               : "0:00"}
           </p>
         </div>
@@ -93,32 +93,37 @@ const FinancialInformation = ({
         <InfoItem
           icon={Globe}
           label="Transacts in African Currencies"
-          value={companyData.transactsInAfricanCurrencies}
+          value={companyData?.transactsInAfricanCurrencies}
           type="boolean"
         />
 
-        {companyData.africanCurrenciesOfInterest && (
+        {companyData?.africanCurrenciesOfInterest && (
           <InfoItem
             icon={DollarSign}
             label="African Currencies of Interest"
-            value={companyData.africanCurrenciesOfInterest}
+            value={companyData?.africanCurrenciesOfInterest}
           />
         )}
 
         <InfoItem
           icon={CreditCard}
           label="Preferred Payment Options"
-          value={companyData.preferredPaymentOptions}
+          value={companyData?.preferredPaymentOptions}
           type="list"
         />
 
-        {companyData.preferredPaymentOther && (
+        {companyData?.preferredPaymentOther && (
           <InfoItem
             icon={CreditCard}
             label="Other Payment Options"
-            value={companyData.preferredPaymentOther}
+            value={companyData?.preferredPaymentOther}
           />
         )}
+        <InfoItem
+          icon={CreditCard}
+          label="Specified African Currencies"
+          value={companyData?.specifyAfricanCurrencies}
+        />
       </div>
     </Card>
   );
