@@ -23,11 +23,10 @@ const AuthState = ({ children }: Props) => {
   const sessionToken = readAuthCookie("sessionToken");
 
   const [currentUser, setCurrentUser] = useState<UserRole | null>(null);
-  const [userLoading, setUserLoading] = useState<boolean>(false);
+  const [userLoading, setUserLoading] = useState<boolean>(true);
 
   const fetchUser = useCallback(async () => {
     try {
-      setUserLoading(true);
       const user = await getCurrentUser();
       setCurrentUser(user);
     } catch (error: any) {
