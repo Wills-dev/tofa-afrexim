@@ -67,3 +67,10 @@ export function convertStringToBoolean(
   if (value === "false") return false;
   return value;
 }
+
+export const statusStyles: Record<string, string> = {
+  Accepted: "text-green-400 bg-green-50",
+  Pending: "text-yellow-400 bg-yellow-50",
+  Processing: "text-blue-400 bg-blue-50",
+  Declined: "text-red-400 bg-red-50",
+};

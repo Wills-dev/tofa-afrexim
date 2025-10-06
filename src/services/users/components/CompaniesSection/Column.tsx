@@ -16,7 +16,7 @@ import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { convertDateFormat } from "@/lib/helpers/dateFormats";
 import { ROUTES } from "@/lib/constants/routes";
-import { numberWithCommas } from "@/lib/helpers";
+import { numberWithCommas, statusStyles } from "@/lib/helpers";
 import { AuthContext } from "@/contexts/AuthState";
 
 const columnHelper = createColumnHelper();
@@ -147,14 +147,6 @@ export const Column = [
     },
     cell: ({ row }) => {
       const status = row.getValue("status") as string;
-
-      const statusStyles: Record<string, string> = {
-        Accepted: "text-green-400 bg-green-50",
-        Pending: "text-yellow-400 bg-yellow-50",
-        Processing: "text-blue-400 bg-blue-50",
-        Declined: "text-blue-400 bg-blue-50",
-      };
-
       return (
         <div
           className={`rounded-full px-3 py-1 text-center w-32 ${
