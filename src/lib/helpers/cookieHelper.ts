@@ -9,7 +9,7 @@ export const createAuthCookie = (
   cookies.set(cookieName, cookieValue, {
     expires,
     path: "/",
-    sameSite: "strict",
+    sameSite: "lax",
     secure: true,
   });
 };
