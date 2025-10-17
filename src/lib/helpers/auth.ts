@@ -7,6 +7,8 @@ export const AUTH_CONFIG = {
     "/set-password",
     "/unauthorized",
     "/not-found",
+    "/reset-password",
+    "/auth/forgot-password",
   ],
   protected: [
     "/onboard",

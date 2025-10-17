@@ -10,7 +10,7 @@ export const createAuthCookie = (
     expires,
     path: "/",
     sameSite: "lax",
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
   });
 };
 

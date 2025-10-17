@@ -16,14 +16,16 @@ const HeroSection = () => {
           <div className="space-y-8">
             <div>
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Connecting Africa's
-                <span className="text-green-600"> Trade </span>
-                Ecosystem
+                Onboarding Businesses to
+                <span className="text-green-600">
+                  {" "}
+                  AFRICAN TRADE EXCHANGE - ATEX{" "}
+                </span>
               </h1>
               <p className="text-xl text-gray-600 mt-6">
                 In partnership with Afrexim Bank and African Trade Gateway, TOFA
                 empowers businesses across Africa to unlock new opportunities
-                and drive continental trade growth.
+                and drive continental trade growth on ATEX.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
