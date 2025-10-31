@@ -28,6 +28,8 @@ import ColumnSorting from "@/components/molecules/ColumnSorting";
 import SearchForm from "@/components/molecules/SearchForm/SearchForm";
 import { SortOptionsType } from "@/lib/types";
 import SortDropdown from "@/components/molecules/SortDropdown/SortDropdown";
+import { exportToExcel } from "@/lib/helpers/exportToExcel";
+import ExportButton from "@/components/molecules/ExportButton/ExportButton";
 
 interface DataTableProps<TData = any> {
   columns: any;
@@ -48,6 +50,7 @@ interface DataTableProps<TData = any> {
   filter?: string;
   setFilter?: (filter: string) => void;
   filterOptions?: SortOptionsType[];
+  exportFilename?: string;
 }
 
 const DataTable = ({
@@ -69,6 +72,7 @@ const DataTable = ({
   filter,
   setFilter,
   filterOptions,
+  exportFilename = "table_data",
 }: DataTableProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -109,6 +113,32 @@ const DataTable = ({
     handleChange !== undefined &&
     handleSubmitSearch !== undefined;
 
+  const handleExport = () => {
+    // Get visible rows from the table
+    const visibleRows = table
+      .getFilteredRowModel()
+      .rows.map((row) => row.original);
+
+    // If you want to export only visible columns, you can transform the data
+    const exportData = visibleRows.map((row: any) => ({
+      "S/N": visibleRows.indexOf(row) + 1,
+      Joined: row.createdAt ? new Date(row.createdAt).toLocaleDateString() : "",
+      "Agent ID": row.id,
+      "First Name": row.firstName,
+      "Last Name": row.lastName,
+      "Phone Number": row.phoneNumber,
+      Email: row.email,
+      "Total Companies": row.totalCompanies,
+      "Total Accepted Companies": row.totalAcceptedCompanies,
+      Country: row.country,
+      "Bank Name": row.bankName,
+      "Account Number": row.accountNumber,
+      "Account Name": row.accountName,
+    }));
+
+    exportToExcel(exportData, exportFilename);
+  };
+
   return (
     <div className="space-y-2 pt-2 max-w-full w-full overflow-x-hidden">
       <div className="flex items-center justify-between gap-6">
@@ -127,6 +157,7 @@ const DataTable = ({
               options={filterOptions}
             />
           )}
+          <ExportButton onClick={handleExport} />
           <ColumnSorting table={table} />
         </div>
       </div>

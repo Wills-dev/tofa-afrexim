@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import { axiosInstance } from "@/lib/axiosInstance";
 import { usePaginationState } from "@/lib/hooks/usePaginationState";
+import { DateRange } from "@/lib/types";
+import { formatDateForCallback } from "@/lib/helpers/dateFormats";
 
 export const useGetAllUsers = () => {
   const {
@@ -25,11 +27,33 @@ export const useGetAllUsers = () => {
     setTotalItems,
   } = usePaginationState();
   const [allAgents, setAllAgents] = useState([]);
+  const [currentRange, setCurrentRange] = useState<DateRange>({
+    startDate: null,
+    endDate: null,
+  });
 
-  const getAgents = async () => {
+  const handleDateRangeChange = (range: DateRange) => {
+    setCurrentRange(range);
+    if (range.startDate && range.endDate) {
+      getAgents(range);
+    }
+  };
+
+  const getAgents = async (dateRange?: DateRange) => {
+    setLoading(true);
     try {
+      const rangeToUse = dateRange || currentRange;
+
       let url = `/agent/all?page=${currentPage}&limit=${limit}${
         searchTerm ? `&search=${searchTerm}` : ""
+      }${
+        rangeToUse.startDate
+          ? `&startDate=${formatDateForCallback(rangeToUse.startDate)}`
+          : ""
+      }${
+        rangeToUse.endDate
+          ? `&endDate=${formatDateForCallback(rangeToUse.endDate)}`
+          : ""
       }`;
       const { data } = await axiosInstance.get(url, {
         withCredentials: true,
@@ -68,5 +92,7 @@ export const useGetAllUsers = () => {
     getAgents,
     totalItems,
     setLimit,
+    handleDateRangeChange,
+    currentRange,
   };
 };

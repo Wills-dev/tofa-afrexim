@@ -110,6 +110,32 @@ export const Column = [
       );
     },
   }),
+  columnHelper.accessor("totalCompanies", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Total Companies
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  }),
+  columnHelper.accessor("totalAcceptedCompanies", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Total Accepted Companies
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  }),
   columnHelper.accessor("country", {
     header: ({ column }) => {
       return (
@@ -118,6 +144,45 @@ export const Column = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Country
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  }),
+  columnHelper.accessor("bankName", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Bank Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  }),
+  columnHelper.accessor("accountNumber", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Account Number
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  }),
+  columnHelper.accessor("accountName", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Account Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

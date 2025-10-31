@@ -9,6 +9,8 @@ import DataTable from "@/components/organisms/DataTable/DataTable";
 import { Column } from "../Column";
 import { useGetAllUsers } from "../../hooks/useGetAllUsers";
 import { useAdminStat } from "@/lib/hooks/useAdminStat";
+import DateRangePicker from "@/components/molecules/DateRangePicker/DateRangePicker";
+import { formatDateForCallback } from "@/lib/helpers/dateFormats";
 
 const AdminUserContent = () => {
   const { isFetching, adminStats, handleDateRangeChange } = useAdminStat();
@@ -28,6 +30,8 @@ const AdminUserContent = () => {
     handleSearch,
     getAgents,
     setLimit,
+    currentRange,
+    handleDateRangeChange: onDateRangeChange,
   } = useGetAllUsers();
 
   const handleSubmitSearch = useCallback((e: FormEvent) => {
@@ -52,26 +56,40 @@ const AdminUserContent = () => {
         />
 
         <div className="w-full max-w-full pt-8">
+          <div className="flex justify-end">
+            <DateRangePicker onDateRangeChange={onDateRangeChange} />
+          </div>
           {loading ? (
             <TableSkeleton />
           ) : (
-            <DataTable
-              columns={Column}
-              data={allAgents}
-              totalPages={totalPages}
-              currentPage={currentPage}
-              prevPage={prevPage}
-              nextPage={nextPage}
-              goToLastPage={goToLastPage}
-              goToFirstPage={goToFirstPage}
-              isFirstPage={isFirstPage}
-              isLastPage={isLastPage}
-              limit={limit}
-              setLimit={setLimit}
-              handleChange={handleSearch}
-              search={searchTerm}
-              handleSubmitSearch={handleSubmitSearch}
-            />
+            <>
+              <DataTable
+                columns={Column}
+                data={allAgents}
+                totalPages={totalPages}
+                currentPage={currentPage}
+                prevPage={prevPage}
+                nextPage={nextPage}
+                goToLastPage={goToLastPage}
+                goToFirstPage={goToFirstPage}
+                isFirstPage={isFirstPage}
+                isLastPage={isLastPage}
+                limit={limit}
+                setLimit={setLimit}
+                handleChange={handleSearch}
+                search={searchTerm}
+                handleSubmitSearch={handleSubmitSearch}
+                exportFilename={`Agent_List${
+                  currentRange.startDate
+                    ? `_From${formatDateForCallback(currentRange.startDate)}`
+                    : ""
+                }${
+                  currentRange.startDate && currentRange.endDate
+                    ? `_To${formatDateForCallback(currentRange.endDate)}`
+                    : ""
+                }`}
+              />
+            </>
           )}
         </div>
       </div>
