@@ -78,6 +78,7 @@ const BanksSection = ({
             size="sm"
             className="w-fit"
             icon={<Edit className="h-4 w-4 mr-2" />}
+            onClick={toggleModal}
           >
             Edit Bank
           </Button>
