@@ -116,6 +116,28 @@ export const Column = [
       );
     },
   }),
+  columnHelper.accessor("totalAccepted", {
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Total Accepted companies
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const totalAccepted = parseFloat(row.getValue("totalAccepted"));
+
+      return (
+        <div className="font-medium text-center">
+          {totalAccepted ? numberWithCommas(totalAccepted) : "0"}
+        </div>
+      );
+    },
+  }),
   columnHelper.accessor("totalAgents", {
     header: ({ column }) => {
       return (

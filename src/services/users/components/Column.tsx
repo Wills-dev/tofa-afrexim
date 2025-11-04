@@ -110,7 +110,7 @@ export const Column = [
       );
     },
   }),
-  columnHelper.accessor("totalCompanies", {
+  columnHelper.accessor("totalOnboarded", {
     header: ({ column }) => {
       return (
         <Button
@@ -123,7 +123,7 @@ export const Column = [
       );
     },
   }),
-  columnHelper.accessor("totalAcceptedCompanies", {
+  columnHelper.accessor("totalAccepted", {
     header: ({ column }) => {
       return (
         <Button

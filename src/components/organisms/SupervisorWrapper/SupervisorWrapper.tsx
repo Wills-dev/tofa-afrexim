@@ -9,6 +9,7 @@ import TableSkeleton from "@/components/molecules/skeletonLoaders/TableSkeleton"
 
 import { Column } from "./Column";
 import { useGetAllSupervisors } from "@/services/users/hooks/useGetAllSupervisors";
+import DateRangePicker from "@/components/molecules/DateRangePicker/DateRangePicker";
 
 const SupervisorWrapper = () => {
   const {
@@ -27,6 +28,7 @@ const SupervisorWrapper = () => {
     handleSearch,
     getSupervisors,
     setLimit,
+    handleDateRangeChange,
   } = useGetAllSupervisors();
 
   const handleSubmitSearch = (e: FormEvent) => {
@@ -42,6 +44,9 @@ const SupervisorWrapper = () => {
           isAdmin
         />
         <div className="w-full max-w-full pt-8">
+          <div className="flex justify-end">
+            <DateRangePicker onDateRangeChange={handleDateRangeChange} />
+          </div>
           {loading ? (
             <TableSkeleton />
           ) : (
