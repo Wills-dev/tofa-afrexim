@@ -64,6 +64,10 @@ export const tradeRoleOption = [
     value: "Logistic Services Provider",
     label: "Logistic Services Provider",
   },
+  {
+    value: "Others",
+    label: "Others",
+  },
 ];
 
 export const businessSectorOptions = [
