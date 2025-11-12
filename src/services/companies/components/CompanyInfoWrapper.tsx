@@ -27,8 +27,14 @@ const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
 
   const { companyInfo, isLoading, getCompanyInfo } =
     useGetCompanyInfo(companyId);
-  const { updateStatus, alert, updating, setAlert } =
-    useUpdateCompanyStatus(companyId);
+  const {
+    updateStatus,
+    alert,
+    updating,
+    setAlert,
+    setDeclineReason,
+    declineReason,
+  } = useUpdateCompanyStatus(companyId);
 
   const handleStatusUpdate = useCallback(
     (status: StatusType) => {
@@ -76,6 +82,8 @@ const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
           companyData={companyInfo}
           onStatusUpdate={handleStatusUpdate}
           loading={updating}
+          setDeclineReason={setDeclineReason}
+          declineReason={declineReason}
         />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="space-y-6">

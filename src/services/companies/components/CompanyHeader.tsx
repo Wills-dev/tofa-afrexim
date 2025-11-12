@@ -16,10 +16,14 @@ const CompanyHeader = ({
   companyData,
   onStatusUpdate,
   loading = false,
+  declineReason,
+  setDeclineReason,
 }: {
   companyData: CompanyType;
   onStatusUpdate: (newStatus: StatusType) => void;
   loading?: boolean;
+  declineReason: string;
+  setDeclineReason: (reason: string) => void;
 }) => {
   const { currentUser } = useContext(AuthContext);
   const StatusIcon = getStatusIcon(companyData.status);
@@ -92,6 +96,8 @@ const CompanyHeader = ({
               currentStatus={companyData.status}
               onStatusUpdate={onStatusUpdate}
               loading={loading}
+              setDeclineReason={setDeclineReason}
+              declineReason={declineReason}
             />
           )}
           {companyOwner && (

@@ -12,7 +12,16 @@ const StatusUpdateDropdown: React.FC<{
   onStatusUpdate: (newStatus: StatusType) => void;
   disabled?: boolean;
   loading?: boolean;
-}> = ({ currentStatus, onStatusUpdate, disabled = false, loading = false }) => {
+  declineReason: string;
+  setDeclineReason: (reason: string) => void;
+}> = ({
+  currentStatus,
+  onStatusUpdate,
+  disabled = false,
+  loading = false,
+  declineReason,
+  setDeclineReason,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
@@ -111,6 +120,8 @@ const StatusUpdateDropdown: React.FC<{
         confirmModal={confirmModal}
         setConfirmModal={setConfirmModal}
         handleConfirmUpdate={handleConfirmUpdate}
+        setDeclineReason={setDeclineReason}
+        declineReason={declineReason}
       />
       {/* Confirmation Modal */}
     </>

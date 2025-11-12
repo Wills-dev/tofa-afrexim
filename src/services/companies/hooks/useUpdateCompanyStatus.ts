@@ -6,6 +6,7 @@ import { StatusType } from "@/lib/types";
 
 export const useUpdateCompanyStatus = (companyId: string) => {
   const [updating, setUpdating] = useState(false);
+  const [declineReason, setDeclineReason] = useState("");
   const [alert, setAlert] = useState<{
     type: "success" | "error";
     message: string;
@@ -13,14 +14,12 @@ export const useUpdateCompanyStatus = (companyId: string) => {
 
   const updateStatus = async (status: StatusType, onSuccess: () => void) => {
     setUpdating(true);
+    const payload =
+      status === "Declined" ? { status, declineReason } : { status };
     try {
-      await axiosInstance.put(
-        `/company/${companyId}/status`,
-        { status },
-        {
-          withCredentials: true,
-        }
-      );
+      await axiosInstance.put(`/company/${companyId}/status`, payload, {
+        withCredentials: true,
+      });
       setAlert({ type: "success", message: "Status Updated!" });
       onSuccess();
     } catch (error) {
@@ -32,5 +31,12 @@ export const useUpdateCompanyStatus = (companyId: string) => {
     }
   };
 
-  return { updateStatus, alert, updating, setAlert };
+  return {
+    updateStatus,
+    alert,
+    updating,
+    setAlert,
+    declineReason,
+    setDeclineReason,
+  };
 };
