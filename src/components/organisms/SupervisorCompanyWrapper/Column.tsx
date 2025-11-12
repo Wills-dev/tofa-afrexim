@@ -177,6 +177,20 @@ export const Column = [
       );
     },
   }),
+  columnHelper.accessor("declineReason", {
+    header: ({ column }) => {
+      return <div>Decline reason</div>;
+    },
+    cell: ({ row }: any) => {
+      const comapny = row.original;
+
+      return (
+        <div className="font-medium text-center capitalize">
+          {comapny?.declineReason || "N/A"}
+        </div>
+      );
+    },
+  }),
   {
     id: "actions",
     cell: ({ row }: any) => {

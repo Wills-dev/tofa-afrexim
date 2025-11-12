@@ -19,6 +19,7 @@ import { useGetCompanyInfo } from "../hooks/useGetCompanyInfo";
 import { useUpdateCompanyStatus } from "../hooks/useUpdateCompanyStatus";
 import { StatusType } from "@/lib/types";
 import { AuthContext } from "@/contexts/AuthState";
+import DeclinedReason from "@/components/molecules/DeclinedReason/DeclinedReason";
 
 const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
   const { currentUser } = useContext(AuthContext);
@@ -35,6 +36,9 @@ const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
     setDeclineReason,
     declineReason,
   } = useUpdateCompanyStatus(companyId);
+
+  const isCompanyDeclined =
+    companyInfo?.status === "Declined" && companyInfo?.declineReason;
 
   const handleStatusUpdate = useCallback(
     (status: StatusType) => {
@@ -77,6 +81,14 @@ const CompanyInfoWrapper = ({ companyId }: { companyId: string }) => {
         </div>
         <BackButton />
       </div>
+      {isCompanyDeclined && (
+        <div className="mb-6">
+          <DeclinedReason
+            title="Declined Reason"
+            reason={companyInfo?.declineReason || ""}
+          />
+        </div>
+      )}
       <div className="space-y-8">
         <CompanyHeader
           companyData={companyInfo}

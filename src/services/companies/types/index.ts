@@ -46,6 +46,7 @@ export interface CompanyType {
   activity: ActivityLogType[];
   listTradePartners: string;
   specifyAfricanCurrencies: string;
+  declineReason?: string;
 }
 
 export interface CompanyOnboardingFormData {

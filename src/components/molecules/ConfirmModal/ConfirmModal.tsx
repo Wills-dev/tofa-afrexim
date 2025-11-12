@@ -5,10 +5,10 @@ import Badge from "@/components/atoms/Badge/Badge";
 
 import { Dispatch, SetStateAction } from "react";
 import { getStatusVariant } from "@/lib/helpers";
-import { AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { StatusType } from "@/lib/types";
+import DeclinedReason from "../DeclinedReason/DeclinedReason";
 
 interface ConfirmModalProps {
   confirmModal: { isOpen: boolean; newStatus: null | StatusType };
@@ -100,21 +100,11 @@ const ConfirmModal = ({
           </div>
         )}
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-            <div>
-              <p className="text-sm font-medium text-yellow-800">
-                Important Notice
-              </p>
-              <p className="text-sm text-yellow-700 mt-1">
-                This action will notify the agent that onboarded the company via
-                email.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        <DeclinedReason
+          title="Important Notice"
+          reason="This action will notify the agent that onboarded the company via
+                email."
+        />
         <div className="flex justify-end gap-3">
           <Button variant="outline" onClick={handleClose}>
             Cancel
