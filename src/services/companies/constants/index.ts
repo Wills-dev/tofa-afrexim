@@ -88,12 +88,6 @@ export const businessSectorOptions = [
     label: "Electricity, Gas, Steam and Air conditioning supply",
   },
   {
-    value:
-      "Water supply, sewerage, waste management and remediation activities",
-    label:
-      "Water supply, sewerage, waste management and remediation activities",
-  },
-  {
     value: "Construction",
     label: "Construction",
   },
@@ -103,59 +97,10 @@ export const businessSectorOptions = [
     label:
       "Wholesale and retail tread; repair of motor vehicles and motocycles",
   },
-  {
-    value: "Transportation and  Storage",
-    label: "Transportation and  Storage",
-  },
-  {
-    value: "Accommodation and Food service activities",
-    label: "Accommodation and Food service activities",
-  },
-  {
-    value: "Information and  communication",
-    label: "Information and  communication",
-  },
-  {
-    value: "Real estate activities",
-    label: "Real estate activities",
-  },
-  {
-    value: "Professional, scientific and technical activities ",
-    label: "Professional, scientific and technical activities ",
-  },
-  {
-    value: "Administrative and support service activities",
-    label: "Administrative and support service activities",
-  },
-  {
-    value: "Public administration and defence; compulsory and security",
-    label: "Public administration and defence; compulsory and security",
-  },
-  {
-    value: "Education",
-    label: "Education",
-  },
-  {
-    value: "Human health and social work activities",
-    label: "Human health and social work activities",
-  },
-  {
-    value: "Arts, entertainment and recreation",
-    label: "Arts, entertainment and recreation",
-  },
+
   {
     value: "Other service activities",
     label: "Other service activities",
-  },
-  {
-    value:
-      "Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",
-    label:
-      "Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use",
-  },
-  {
-    value: "Activities of extraterritorial organizations and bodies",
-    label: "Activities of extraterritorial organizations and bodies",
   },
 ];
 
