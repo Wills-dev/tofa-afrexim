@@ -25,8 +25,10 @@ export const useGetAllCompanies = () => {
     setCurrentPage,
     totalItems,
     setTotalItems,
+    status,
+    setStatus,
   } = usePaginationState();
-  const [status, setStatus] = useState<string>("");
+
   const [allCompanies, setAllCompanies] = useState<CompanyType[]>([]);
 
   const getCompaines = async () => {

@@ -7,6 +7,7 @@ export const usePaginationState = () => {
 
   const initialPage = Number(searchParams.get("page")) || 1;
   const initialLimit = Number(searchParams.get("limit")) || 10;
+  const initialStatus = searchParams.get("status") || "";
 
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [totalPages, setTotalPages] = useState(1);
@@ -14,6 +15,7 @@ export const usePaginationState = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [totalItems, setTotalItems] = useState(0);
+  const [status, setStatus] = useState<string>(initialStatus);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -56,12 +58,14 @@ export const usePaginationState = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", String(newPage));
     params.set("limit", String(newLimit));
+    if (status) params.set("status", status);
+    else if (!status) params.delete("status");
     router.replace(`?${params.toString()}`);
   };
 
   useEffect(() => {
     updateUrl(currentPage, limit);
-  }, [currentPage, limit]);
+  }, [currentPage, limit, status]);
 
   return {
     loading,
@@ -83,5 +87,7 @@ export const usePaginationState = () => {
     setCurrentPage,
     totalItems,
     setTotalItems,
+    status,
+    setStatus,
   };
 };
