@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { convertDateFormat } from "@/lib/helpers/dateFormats";
 import { ROUTES } from "@/lib/constants/routes";
 import { numberWithCommas, statusStyles } from "@/lib/helpers";
+import { useContext } from "react";
+import { AuthContext } from "@/contexts/AuthState";
+import { useUpdateCompanyStatus } from "@/services/companies/hooks/useUpdateCompanyStatus";
 
 const columnHelper = createColumnHelper();
 
@@ -188,9 +191,14 @@ export const Column = [
     id: "actions",
     cell: ({ row }: any) => {
       const comapny = row.original;
+      const { currentUser } = useContext(AuthContext);
+      const { updateStatus, updating } = useUpdateCompanyStatus(comapny.id);
 
       return (
         <div className="space-y-1 flex flex-col">
+          {updating && (
+            <div className="w-full h-screen min-h-screen fixed bg-white/50" />
+          )}
           <Link
             href={ROUTES?.dashboard_admin_company_info(comapny.id)}
             className="text-blue-500 hover:underline transition-all duration-300"
@@ -203,6 +211,14 @@ export const Column = [
           >
             View Agent Info
           </Link>
+          {currentUser?.id === "AF000001" && (
+            <button
+              onClick={() => updateStatus("Accepted", () => {})}
+              className="text-green-500 hover:text-green-600 transition-all duration-300"
+            >
+              Accept company
+            </button>
+          )}
           {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0 text-right">
