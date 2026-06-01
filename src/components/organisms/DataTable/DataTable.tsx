@@ -141,7 +141,7 @@ const DataTable = ({
   };
 
   return (
-    <div className="space-y-2 pt-2 max-w-full w-full overflow-x-hidden">
+    <div className="space-y-2 pt-2 max-w-full w-full">
       <div className="flex items-center justify-between gap-6">
         {showSearchInput && (
           <SearchForm
@@ -177,7 +177,7 @@ const DataTable = ({
                         ? null
                         : flexRender(
                             header?.column?.columnDef.header,
-                            header?.getContext()
+                            header?.getContext(),
                           )}
                     </TableHead>
                   );
@@ -197,7 +197,7 @@ const DataTable = ({
                     <TableCell key={cell.id} className="whitespace-nowrap">
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}

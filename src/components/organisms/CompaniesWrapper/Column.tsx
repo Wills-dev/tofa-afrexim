@@ -192,40 +192,13 @@ export const Column = (getCompaines: () => void) => [
     id: "actions",
     cell: ({ row }: any) => {
       const comapny = row.original;
-      const { currentUser } = useContext(AuthContext);
-      const { updateStatus, updating } = useUpdateCompanyStatus(comapny.id);
 
       return (
-        <div className="space-y-1 flex flex-col">
-          <CompanyDropdow
-            companyId={comapny.id}
-            agentId={comapny?.agent?.id}
-            refetchCompanies={getCompaines}
-          />
-          {/* {updating && (
-            <div className="w-full h-screen min-h-screen fixed bg-white/50" />
-          )}
-          <Link
-            href={ROUTES?.dashboard_admin_company_info(comapny.id)}
-            className="text-blue-500 hover:underline transition-all duration-300"
-          >
-            View Info
-          </Link>
-          <Link
-            href={ROUTES?.dashboard_admin_users_info(comapny?.agent?.id)}
-            className="text-blue-500 hover:underline transition-all duration-300"
-          >
-            View Agent Info
-          </Link>
-          {currentUser?.id === "AF000001" && (
-            <button
-              onClick={() => updateStatus("Accepted", () => {})}
-              className="text-green-500 hover:text-green-600 transition-all duration-300"
-            >
-              Accept company
-            </button>
-          )} */}
-        </div>
+        <CompanyDropdow
+          companyId={comapny.id}
+          agentId={comapny?.agent?.id}
+          refetchCompanies={getCompaines}
+        />
       );
     },
     enableSorting: false,

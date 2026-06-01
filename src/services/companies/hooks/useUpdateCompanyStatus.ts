@@ -12,16 +12,25 @@ export const useUpdateCompanyStatus = (companyId: string) => {
     message: string;
   } | null>(null);
 
-  const updateStatus = async (status: StatusType, onSuccess: () => void) => {
+  const updateStatus = async (
+    status: StatusType,
+    onSuccess: () => void,
+    reason?: string,
+  ) => {
     setUpdating(true);
+
+    const formattedReason = reason || declineReason;
     const payload =
-      status === "Declined" ? { status, declineReason } : { status };
+      status === "Declined"
+        ? { status, declineReason: formattedReason }
+        : { status };
     try {
       await axiosInstance.put(`/company/${companyId}/status`, payload, {
         withCredentials: true,
       });
       setAlert({ type: "success", message: "Status Updated!" });
       onSuccess();
+      setUpdating(false);
     } catch (error) {
       console.log("error updating status", error);
       const errMsg = promiseErrorFunction(error);
