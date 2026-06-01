@@ -56,76 +56,7 @@ export const Column = (getCompaines: () => void) => [
       );
     },
   }),
-  columnHelper.accessor("country", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Country
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-  }),
-  columnHelper.accessor("businessSector", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Business Sector
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-  }),
-  columnHelper.accessor("annualTurnoverUSD", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Annual Turn Over
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("annualTurnoverUSD"));
 
-      return (
-        <div className="font-medium text-center">
-          ${amount ? numberWithCommas(amount) : "0.00"}
-        </div>
-      );
-    },
-  }),
-  columnHelper.accessor("currentLiquidityUSD", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Current Liquidity
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("currentLiquidityUSD"));
-
-      return (
-        <div className="font-medium text-center">
-          ${amount ? numberWithCommas(amount) : "0.00"}
-        </div>
-      );
-    },
-  }),
   columnHelper.accessor("agent.firstName", {
     header: ({ column }) => {
       return (
