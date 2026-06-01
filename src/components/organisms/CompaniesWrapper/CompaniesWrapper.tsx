@@ -63,7 +63,7 @@ const CompaniesWrapper = () => {
             <TableSkeleton />
           ) : (
             <DataTable
-              columns={Column}
+              columns={Column(getCompaines)}
               data={allCompanies}
               totalPages={totalPages}
               currentPage={currentPage}

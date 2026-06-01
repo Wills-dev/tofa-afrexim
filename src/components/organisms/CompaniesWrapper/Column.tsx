@@ -10,10 +10,11 @@ import { numberWithCommas, statusStyles } from "@/lib/helpers";
 import { useContext } from "react";
 import { AuthContext } from "@/contexts/AuthState";
 import { useUpdateCompanyStatus } from "@/services/companies/hooks/useUpdateCompanyStatus";
+import CompanyDropdow from "@/components/molecules/CompanyDropdow/CompanyDropdow";
 
 const columnHelper = createColumnHelper();
 
-export const Column = [
+export const Column = (getCompaines: () => void) => [
   {
     id: "serialNumber",
     header: "S/N",
@@ -196,7 +197,12 @@ export const Column = [
 
       return (
         <div className="space-y-1 flex flex-col">
-          {updating && (
+          <CompanyDropdow
+            companyId={comapny.id}
+            agentId={comapny?.agent?.id}
+            refetchCompanies={getCompaines}
+          />
+          {/* {updating && (
             <div className="w-full h-screen min-h-screen fixed bg-white/50" />
           )}
           <Link
@@ -218,28 +224,7 @@ export const Column = [
             >
               Accept company
             </button>
-          )}
-          {/* <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 text-right">
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <Link href={ROUTES?.dashboard_admin_company_info(comapny.id)}>
-                View Info
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link
-                href={ROUTES?.dashboard_admin_users_info(comapny?.agent?.id)}
-              >
-                View Agent Info
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu> */}
+          )} */}
         </div>
       );
     },
